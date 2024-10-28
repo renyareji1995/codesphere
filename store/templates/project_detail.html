@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+
+{% load embed_video_tags %}
+
+{%block main_block%}
+
+
+<div class="w-3/4 mx-auto">
+<a
+  href="#"
+  class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"
+>
+  <span
+    class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+  ></span>
+
+  <div class="sm:flex sm:justify-between sm:gap-4">
+    <div>
+      <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
+        Title: {{data.title}}
+      </h3>
+
+      <p class="mt-1 text-xs font-medium text-gray-600">By {{data.developer}}</p>
+    </div>
+
+    <div class="hidden sm:block sm:shrink-0">
+      <img
+        alt=""
+        src="{{data.preview_image.url}}"
+        class="size-16 rounded-lg object-cover shadow-sm"
+      />
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <p class="text-pretty text-sm text-gray-500">
+        Description:{{data.description}}
+    </p>
+  </div>
+  <div class="hidden sm:block sm:basis-56">
+    {% video data.thumbnail '300x200' %}
+</div>
+  <dl class="mt-6 flex gap-4 sm:gap-6">
+    <div class="flex flex-col-reverse">
+      <dt class="text-sm font-medium text-gray-600">Published date</dt>
+      <dd class="text-xs text-gray-500">{{data.created_date|date}}</dd>
+    </div>
+
+  </dl>
+</a>
+
+</div>
+{%endblock%}
