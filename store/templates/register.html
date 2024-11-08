@@ -1,17 +1,37 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min(2).css'%}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <form action="" method="post">
-            {%csrf_token%}
-            {{form}}
-            <button type="submit">Register</button>
-        </form>
-    </div>
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card mb-3" style="max-width: 70%;">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="{%static 'images/signup.png'%}" class="rounded-start" alt="..." style="height: 500px;width: 100%;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <h1 class="mb-3 text-center">Registration Form</h1>
+                        {%csrf_token%}
+                        {{form}}
+                        <br>
+                        <button type="submit" class="btn btn-primary" style="width: 10rem;">Register</button>
+                    </form> 
+                    <br>
+                    <p><a href="{%url 'signin'%}" style="color:blue">Login</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         
+                   
+    </div>            
 </body>
 </html>

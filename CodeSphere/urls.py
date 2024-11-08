@@ -22,12 +22,18 @@ from store import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',views.SignUpView.as_view(),name="signup"),
-    path('signin/',views.SignInView.as_view(),name="signin"),
+    path('',views.SignInView.as_view(),name="signin"),
     path('index/',views.IndexView.as_view(),name="index"),
     path('logout/',views.LogoutView.as_view(),name="signout"),
     path('profile/change',views.UserProfileEditView.as_view(),name="profile-edit"),
     path('project/add/',views.ProjectCreateView.as_view(),name="project-add"),
     path('myworks/all/',views.MyProjectListView.as_view(),name="my-works"),
     path('project/<int:pk>/change/',views.ProjectUpdateView.as_view(),name="project-update"),
-    path('project/<int:pk>/detail/',views.ProjectDetailView.as_view(),name="project-detail")
+    path('project/<int:pk>/detail/',views.ProjectDetailView.as_view(),name="project-detail"),
+    path('project/<int:pk>/addto-wishlist/',views.AddToWishlistItemView.as_view(),name="addto-wishlist"),
+    path('wishlist/all/',views.MyWishListItemsView.as_view(),name="my-wishlist"),
+    path("wishlist-item/<int:pk>/remove/",views.WishListItemDeleteView.as_view(),name="wishlist-delete"),
+    path("checkout/",views.CheckOutView.as_view(),name="checkout"),
+    path('payment/verify/',views.PaymentVerificationView.as_view(),name="verify-payment"),
+    path('orders/all/',views.MyOrdersView.as_view(),name="orders")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

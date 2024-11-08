@@ -1,12 +1,13 @@
 {%extends 'base.html'%}
 {%block main_block%}
 
-
+Welcome {{request.user}}
 <div class="w-3/4 mx-auto">
     {%for p in data%}
 <div class="w-1/2 mx-auto">
-    <a href="#" class="group relative block overflow-hidden">
+    <a href="" class="group relative block overflow-hidden">
         <button
+        onclick=location.href="{%url 'addto-wishlist' p.id%}"
           class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
         >
           <span class="sr-only">Wishlist</span>
@@ -39,6 +40,7 @@
           <p class="text-gray-700">
           
             <span class="text-gray-400">{{p.price}}</span>
+            <span class="text-gray-400">({{p.downloads}}downloads)</span>
           </p>
       
           <h3 class="mt-1.5 text-lg font-medium text-gray-900">{{p.title}}</h3>
